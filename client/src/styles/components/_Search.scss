@@ -1,0 +1,39 @@
+.search {
+    display: flex;
+    flex-direction: column;
+
+    &>div {
+        display: flex;
+        flex-direction: row;
+        width: 80px;
+        height: 40px;
+        margin-bottom: 30px;
+
+        &>p {
+            margin: 5px 4px;
+            font-size: 12px;
+        }
+
+        &>select {
+            font-size: 10px;
+            margin-right: 5px;
+        }
+
+        .order-by {
+            width: 90px;
+        }
+    }
+
+    &>form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &>input {
+            height: 30px;
+            padding-left: 5px;
+            margin-right: 10px;
+        }
+    }
+}
