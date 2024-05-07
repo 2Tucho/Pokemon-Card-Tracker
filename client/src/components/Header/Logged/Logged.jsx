@@ -8,6 +8,11 @@ const Logged = () => {
       <li><Link to="/collection">Collection</Link></li>
       <li><Link to="/">Logout</Link></li>
     </ul>
+    
+    <div>
+        <h1>PCT</h1>
+        <p>Pokémon Card Tracker</p>
+      </div>
   </nav>;
 };
 
