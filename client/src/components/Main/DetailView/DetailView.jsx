@@ -2,7 +2,7 @@ import React from "react";
 
 const DetailView = () => {
   return <section className="detail-view">
-    <h1>Collection</h1>
+    <h1>DetailView</h1>
   </section>;
 };
 

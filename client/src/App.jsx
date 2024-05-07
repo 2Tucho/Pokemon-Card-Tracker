@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./styles/views/_App.scss";
 import Footer from "../src/components/Footer";
 import Header from "../src/components/Header";
@@ -8,9 +9,11 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Main />
+        <Footer />
+      </BrowserRouter>
     </>
   )
 };
