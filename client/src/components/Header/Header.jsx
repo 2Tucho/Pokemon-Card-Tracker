@@ -6,7 +6,8 @@ import NoLogged from "./NoLogged";
 
 const Header = () => {
   return <header className="header">
-    <h1>Header</h1>
+    {/* <Logged /> */}
+    <NoLogged />
   </header>;
 };
 
