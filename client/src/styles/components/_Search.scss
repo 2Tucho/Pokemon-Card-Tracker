@@ -1,13 +1,14 @@
 .search {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     &>div {
         display: flex;
         flex-direction: row;
-        width: 80px;
-        height: 40px;
+        align-items: center;
         margin-bottom: 30px;
+        width: 90%;
 
         &>p {
             margin: 5px 4px;
@@ -17,10 +18,20 @@
         &>select {
             font-size: 10px;
             margin-right: 5px;
+            height: 24px;
         }
 
         .order-by {
             width: 90px;
+            margin-right: 24px;
+        }
+
+        .filter-by-supertype {
+            width: 88px;
+        }
+
+        .filter-by-format {
+            width: 80px;
         }
     }
 
