@@ -14,7 +14,7 @@ const Main = () => {
       <Route path="/" element={<Home />}/>
       <Route path="/*" element={<Navigate to={"/"} />} />
       <Route path="/collection" element={<Collection />}/>
-      <Route path="/detailview/:id" element={<DetailView />}/>
+      <Route path="/detailview/:code" element={<DetailView />}/>
       <Route path="/login" element={<Login />}/>
     </Routes>
   </main>;
