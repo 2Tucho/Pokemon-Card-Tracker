@@ -60,27 +60,29 @@ const Search = ({ setSearchedData }) => {
       orderBy = "orderBy=types"
     } else orderBy = "orderBy=-set.releaseDate"
 
-    function fetchData() {
-      const url = `https://api.pokemontcg.io/v2/cards?q=name:*${inputCard}*%20${filterSupertypes}%20${filterFormat}&${orderBy}`;
-      const headers = {
-        "X-Api-Key": import.meta.env.VITE_API_KEY,
+    if(inputCard) {
+      function fetchData() {
+        const url = `https://api.pokemontcg.io/v2/cards?q=name:*${inputCard}*%20${filterSupertypes}%20${filterFormat}&${orderBy}`;
+        const headers = {
+          "X-Api-Key": import.meta.env.VITE_API_KEY,
+        };
+        try {
+          axios.get(url, { headers })
+            .then(response => setSearchedData(response))
+            .catch(error => {
+              console.error('There was an error!', error);
+            });
+          console.log(url);
+          console.log(inputRef.current.value)
+          console.log(orderRef.current.value)
+          console.log(formatRef.current.value)
+          console.log(supertypeRef.current.value)
+        } catch {
+          console.log("ERROR: NOT FOUND")
+        }
       };
-      try {
-        axios.get(url, { headers })
-          .then(response => setSearchedData(response))
-          .catch(error => {
-            console.error('There was an error!', error);
-          });
-        console.log(url);
-        console.log(orderRef.current.value)
-        console.log(formatRef.current.value)
-        console.log(supertypeRef.current.value)
-        console.log(printData.data.data[0].types[0])
-      } catch {
-        console.log("ERROR: NOT FOUND")
-      }
-    };
-    fetchData();
+      fetchData();
+    } else null
   }, [inputCard])
 
   function searchCard() {
