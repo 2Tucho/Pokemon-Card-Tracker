@@ -73,11 +73,10 @@ const Search = ({ setSearchedData }) => {
               console.error('There was an error!', error);
             });
           console.log(url);
-          console.log(inputRef)
+          console.log(inputRef.current.value)
           console.log(orderRef.current.value)
           console.log(formatRef.current.value)
           console.log(supertypeRef.current.value)
-          console.log(response.data)
         } catch {
           console.log("ERROR: NOT FOUND")
         }
