@@ -13,9 +13,17 @@ const Cards = () => {
         <img src={res.images.small} alt={res.name+`[${res.set.ptcgoCode}-${res.number}]`}/>
       </Link>
       <p>{res.name}</p>
-      <p>{`[${res.set.ptcgoCode}-${res.number}]`}</p>
-    </article>
-    ) : null }
+      { res.set.ptcgoCode ? <p>{`[${res.set.ptcgoCode}-${res.number}]`}</p> :
+        res.set.name == "Scarlet & Violet" ? <p>{`[SVI-${res.number}]`}</p> :
+        res.set.name == "Paldea Evolved" ? <p>{`[PAL-${res.number}]`}</p> :
+        res.set.name == "Obsidian Flames" ? <p>{`[OBF-${res.number}]`}</p> :
+        res.set.name == "151" ? <p>{`[MEW-${res.number}]`}</p> :
+        res.set.name == "Paradox Rift" ? <p>{`[PAR-${res.number}]`}</p> : 
+        res.set.name == "Paldean Fates" ? <p>{`[PAF-${res.number}]`}</p> : 
+        res.set.name == "Temporal Forces" ? <p>{`[TEF-${res.number}]`}</p> : 
+        res.set.name == "Scarlet & Violet Black Star Promos" ? <p>{`[TEF-${res.number}]`}</p> : 
+        <p>{`[${res.set.id}-${res.number}]`}</p>}
+    </article>) : null }
   </div>;
 };
 
