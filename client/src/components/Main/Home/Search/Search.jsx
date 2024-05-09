@@ -70,16 +70,16 @@ const Search = () => {
         };
         try {
           axios.get(url, { headers })
-            .then(response => setSearchedData(response))
+            .then(response => setSearchedData(response.data.data))
             .catch(error => {
               console.error('There was an error!', error);
             });
-          console.log(url);
+          /* console.log(url);
           console.log(inputRef.current.value)
           console.log(orderRef.current.value)
           console.log(formatRef.current.value)
           console.log(supertypeRef.current.value)
-          console.log(searchedData)
+          console.log(searchedData) */
         } catch {
           console.log("ERROR: NOT FOUND")
         }

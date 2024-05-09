@@ -9,7 +9,7 @@ import Login from "./Login";
 //Hacer las rutas para las diferentes vistas
 
 const Main = () => {
-  const [searchedData, setSearchedData] = useState("");
+  const [searchedData, setSearchedData] = useState([]);
 
   return <main className="main">
     <SearchDataContext.Provider value={{ searchedData, setSearchedData }}>
@@ -17,7 +17,7 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<Navigate to={"/"} />} />
         <Route path="/collection" element={<Collection />} />
-        <Route path="/detailview/:code" element={<DetailView />} />
+        <Route path="/detailview/:id" element={<DetailView />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </SearchDataContext.Provider>
