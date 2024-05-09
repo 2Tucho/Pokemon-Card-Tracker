@@ -1,10 +1,13 @@
-import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { SearchDataContext } from "../../../../context/SearchDataContext";
 
-const Cards = ({ searchedData }) => {
+const Cards = () => {
+  const searchedData = useContext(SearchDataContext);
+  //console.log(searchedData.searchedData.data.data)
 
   return <div className="cards">
-    { searchedData? searchedData.data.data.map(res => 
+    { searchedData.searchedData? searchedData.searchedData.data.data.map(res => 
     <article>
       <Link to={`/detailview/${res.name+`[${res.set.ptcgoCode}-${res.number}]`}`}>
         <img src={res.images.small} alt={res.name+`[${res.set.ptcgoCode}-${res.number}]`}/>
