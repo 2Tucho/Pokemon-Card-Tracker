@@ -1,13 +1,15 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { debounce } from "lodash";
 import axios from 'axios';
+import { SearchDataContext } from "../../../../context/SearchDataContext";
 
-const Search = ({ setSearchedData }) => {
+const Search = () => {
   const [inputCard, setInputCard] = useState("");
   const inputRef = useRef();
   const formatRef = useRef();
   const supertypeRef = useRef();
   const orderRef = useRef();
+  const {searchedData, setSearchedData} = useContext(SearchDataContext);
 
   useEffect(() => {
     let filterSupertypes = "";
@@ -68,15 +70,16 @@ const Search = ({ setSearchedData }) => {
         };
         try {
           axios.get(url, { headers })
-            .then(response => setSearchedData(response))
+            .then(response => setSearchedData(response.data.data))
             .catch(error => {
               console.error('There was an error!', error);
             });
-          console.log(url);
+          /* console.log(url);
           console.log(inputRef.current.value)
           console.log(orderRef.current.value)
           console.log(formatRef.current.value)
           console.log(supertypeRef.current.value)
+          console.log(searchedData) */
         } catch {
           console.log("ERROR: NOT FOUND")
         }
@@ -138,7 +141,6 @@ const Search = ({ setSearchedData }) => {
 
     <form action="#">
       <input type="search" ref={inputRef} onChange={debouncedOnChange} autoFocus />
-      <button>Search</button>
     </form>
   </div>;
 };
