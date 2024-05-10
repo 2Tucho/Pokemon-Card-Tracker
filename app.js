@@ -9,7 +9,6 @@ require("dotenv").config();
 
 // Rutas
 const collectionRoutes = require("./routes/collection.routes")
-const userRoutes = require("./routes/user.routes")
 
 //Middlewares
 app.use(express.json()); // Para parsear el body de las peticiones
@@ -26,8 +25,6 @@ app.get("/", (req, res) => {
 //API
 //http://localhost:3000/api/collection
 app.use("/api/collection", collectionRoutes);
-//http://localhost:3000/api/user
-app.use("/api/user", userRoutes);
 
 //Si se va a cualquier otra p'agina que de el error
 app.use("*", error404);
