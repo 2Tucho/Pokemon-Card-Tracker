@@ -42,8 +42,8 @@ INSERT INTO users (id, user_name, password, login)
 VALUES (01, 'user1', 'temp123', true);
 
 /* Agregar una carta a favoritos */
-INSERT INTO collection (id, name, number, img_url, normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil)
-VALUES (01, 'Mew ex', '232', 'https://images.pokemontcg.io/sv4pt5/232.png', 0, 0, 0, 0, 0);
+INSERT INTO collection (id, name, number, set, img_url, normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil)
+VALUES (01, 'Mew ex', '232', 'PAF','https://images.pokemontcg.io/sv4pt5/232.png', 0, 0, 0, 0, 0);
 
 /* Tabla relacional */
 INSERT INTO users_collection (id, user_id, poke_id)
