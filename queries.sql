@@ -1,5 +1,3 @@
-SELECT * FROM collection;
-
 CREATE TABLE users
   (
   id bigint NOT NULL,
@@ -11,9 +9,10 @@ CREATE TABLE users
 
 CREATE TABLE collection
   (
-  id bigint NOT NULL,
+  id varchar(255),
   name varchar(255),
   number int,
+  set varchar(255),
   img_url varchar(255),
   normal_foil int,
   holo_foil int,
@@ -27,11 +26,18 @@ CREATE TABLE users_collection
   (
   id bigint NOT NULL,
   user_id bigint NOT NULL,
-  poke_id bigint NOT NULL,
+  poke_id varchar(255) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (poke_id) REFERENCES collection(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (poke_id) REFERENCES collection(id) ON DELETE CASCADE
 );
+
+
+
+/*************** GET ***************/
+SELECT * FROM collection as c
+INNER JOIN users_collection as uc ON c.id = uc.poke_id
+WHERE uc.user_id = 1
 
 
 
@@ -43,11 +49,13 @@ VALUES (01, 'user1', 'temp123', true);
 
 /* Agregar una carta a favoritos */
 INSERT INTO collection (id, name, number, set, img_url, normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil)
-VALUES (01, 'Mew ex', '232', 'PAF','https://images.pokemontcg.io/sv4pt5/232.png', 0, 0, 0, 0, 0);
+VALUES ('sv4pt5-232', 'Mew ex', 232, 'Paldean Fates','https://images.pokemontcg.io/sv4pt5/232.png', 1, 0, 0, 0, 0),
+('sv5-115', 'Metagross', 115, 'Temporal Forces', 'https://images.pokemontcg.io/sv5/115.png', 1, 0, 0, 0, 0);
 
 /* Tabla relacional */
 INSERT INTO users_collection (id, user_id, poke_id)
-VALUES (01, 01, 01);
+VALUES (01, 01, 'sv4pt5-232'),
+(02, 01, 'sv5-115');
 
 
 
@@ -61,14 +69,12 @@ WHERE id = 1;
 /* Cambiar la cantidad de cartas en la colección*/
 UPDATE collection
 SET normal_foil = 4, holo_foil = 2, reverse_foil = 1, play_pokemon = 2, play_pokemon_foil = 0
-WHERE id = 1;
+WHERE id = 'sv4pt5-232';
 
 
 
 /*************** DELETE ***************/
 
 /* Quitar una carta de la colección */
-DELETE FROM users_collection
-WHERE id = 1;
 DELETE FROM collection 
-WHERE id = 1;
+WHERE id = 'sv4pt5-232';
