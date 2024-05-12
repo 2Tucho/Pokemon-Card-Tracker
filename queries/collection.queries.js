@@ -3,7 +3,7 @@ const queries = {
     getAllCards: `
         SELECT * FROM collection as c
         INNER JOIN users_collection as uc ON c.id = uc.poke_id
-        WHERE uc.user_id = 1
+        WHERE uc.user_id = $1
             `,
     postCard: `
         INSERT INTO collection (id, name, number, set, img_url, normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil)
