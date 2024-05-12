@@ -50,12 +50,14 @@ VALUES (01, 'user1', 'temp123', true);
 /* Agregar una carta a favoritos */
 INSERT INTO collection (id, name, number, set, img_url, normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil)
 VALUES ('sv4pt5-232', 'Mew ex', 232, 'Paldean Fates','https://images.pokemontcg.io/sv4pt5/232.png', 1, 0, 0, 0, 0),
-('sv5-115', 'Metagross', 115, 'Temporal Forces', 'https://images.pokemontcg.io/sv5/115.png', 1, 0, 0, 0, 0);
+('sv5-115', 'Metagross', 115, 'Temporal Forces', 'https://images.pokemontcg.io/sv5/115.png', 1, 0, 0, 0, 0),
+('swsh10-40', 'Origin Forme Palkia VSTAR', 40, 'Astral Radiance','https://images.pokemontcg.io/swsh10/40.png', 1, 0, 0, 0, 0);
 
 /* Tabla relacional */
 INSERT INTO users_collection (id, user_id, poke_id)
 VALUES (01, 01, 'sv4pt5-232'),
-(02, 01, 'sv5-115');
+(02, 02, 'sv5-115'),
+(03, 01, 'swsh10-40');
 
 
 
