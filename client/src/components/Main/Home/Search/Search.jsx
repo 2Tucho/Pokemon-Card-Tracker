@@ -133,7 +133,7 @@ const Search = () => {
     </div>
 
     <form action="#">
-      <input type="search" ref={inputRef} onChange={debouncedOnChange} autoFocus />
+      <input type="search" ref={inputRef} onChange={debouncedOnChange} placeholder="Search a card" autoFocus />
     </form>
   </div>;
 };
