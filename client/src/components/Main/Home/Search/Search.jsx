@@ -64,7 +64,7 @@ const Search = () => {
 
     if(inputCard) {
       function fetchData() {
-        const url = `https://api.pokemontcg.io/v2/cards?q=name:*${inputCard}*%20${filterSupertypes}%20${filterFormat}&${orderBy}`;
+        const url = `https://api.pokemontcg.io/v2/cards?q=name:"*${inputCard}*"%20${filterSupertypes}%20${filterFormat}&${orderBy}`;
         const headers = {
           "X-Api-Key": import.meta.env.VITE_API_KEY,
         };

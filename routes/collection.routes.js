@@ -1,10 +1,10 @@
 const express = require('express');
-const collectionController = require("../controllers/collection.controller");
 const router = express.Router();
+const collectionController = require("../controllers/collection.controller");
 
 router.get('/', collectionController.getAllCards);
-/* router.post('/', pctController.createAuthor);
-router.put('/', pctController.updateAuthor);
-router.delete('/', pctController.deleteAuthor); */
+router.post('/', collectionController.createNewCard);
+router.put('/', collectionController.updateCard);
+router.delete('/', collectionController.deleteCard);
 
 module.exports = router;

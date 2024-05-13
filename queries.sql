@@ -11,7 +11,7 @@ CREATE TABLE collection
   (
   id varchar(255),
   name varchar(255),
-  number int,
+  number varchar(255),
   set varchar(255),
   img_url varchar(255),
   normal_foil int,
@@ -24,10 +24,8 @@ CREATE TABLE collection
 
 CREATE TABLE users_collection
   (
-  id bigint NOT NULL,
   user_id bigint NOT NULL,
   poke_id varchar(255) NOT NULL,
-  PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (poke_id) REFERENCES collection(id) ON DELETE CASCADE
 );
@@ -54,10 +52,10 @@ VALUES ('sv4pt5-232', 'Mew ex', 232, 'Paldean Fates','https://images.pokemontcg.
 ('swsh10-40', 'Origin Forme Palkia VSTAR', 40, 'Astral Radiance','https://images.pokemontcg.io/swsh10/40.png', 1, 0, 0, 0, 0);
 
 /* Tabla relacional */
-INSERT INTO users_collection (id, user_id, poke_id)
-VALUES (01, 01, 'sv4pt5-232'),
-(02, 02, 'sv5-115'),
-(03, 01, 'swsh10-40');
+INSERT INTO users_collection (user_id, poke_id)
+VALUES (01, 'sv4pt5-232'),
+(02, 'sv5-115'),
+(01, 'swsh10-40');
 
 
 

@@ -3,11 +3,12 @@ const pool = require("../config/db_pgsql");
 
 
 // GET all
-const getAllCards = async () => {
+const getAllCards = async (user_id) => {
+    const { id } = user_id;
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.getAllCards);
+        const data = await client.query(queries.getAllCards, [id]);
         result = data.rows;
     } catch (err) {
         console.log(err);
@@ -18,19 +19,24 @@ const getAllCards = async () => {
     return result;
 };
 
-// CREATE
-/* const createAuthor = async (author) => {
-    const { name, surname, email, image } = author;
+// CREATE new card
+const createNewCard = async (card) => {
+    const { id, name, number, set, img_url, user_id } = card;
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.createAuthor, [
+        const data = await client.query(queries.createNewCard, [
+            id,
             name,
-            surname,
-            email,
-            image,
+            number,
+            set,
+            img_url
         ]);
         result = data.rowCount;
+        if (result) {
+            const updateUsersCollection = await client.query(queries.createNewUserCollection, [user_id, id]) // Da igual como se llamen, solo sabe que lo que le de en la posición 1 del array [user_id, id] va a ser el el valor de user_id en la query y que el segundo va a ser el de poke_id
+            result += updateUsersCollection.rowCount;
+        }
     } catch (err) {
         console.log(err);
         throw err;
@@ -38,20 +44,21 @@ const getAllCards = async () => {
         client.release();
     }
     return result;
-}; */
+};
 
 // UPDATE
-/* const updateAuthor = async (author) => {
-    const { name, surname, email, image, old_email } = author;
+const updateCard = async (author) => {
+    const { normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil, id } = author;
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.updateAuthor, [
-            name,
-            surname,
-            email,
-            image,
-            old_email
+        const data = await client.query(queries.updateCard, [
+            normal_foil,
+            holo_foil,
+            reverse_foil,
+            play_pokemon,
+            play_pokemon_foil,
+            id
         ]);
         result = data.rowCount;
     } catch (err) {
@@ -61,15 +68,15 @@ const getAllCards = async () => {
         client.release();
     }
     return result;
-}; */
+};
 
 // DELETE
-/* const deleteAuthor = async (author) => {
-    const { email } = author;
+const deleteCard = async (card) => {
+    const { id } = card;
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.deleteAuthor, [ email ]);
+        const data = await client.query(queries.deleteCard, [id]);
         result = data.rowCount;
     } catch (err) {
         console.log(err);
@@ -78,21 +85,18 @@ const getAllCards = async () => {
         client.release();
     }
     return result;
-}; */
+};
 
 
 const pct = {
-    getAllCards
-    /* createAuthor,
-    updateAuthor,
-    deleteAuthor */
+    getAllCards,
+    createNewCard,
+    updateCard,
+    deleteCard
 };
 
 module.exports = pct;
 
 //PRUEBAS
 
-//getAuthorByNameSurname("Alvaru", "Riveru").then(data=>console.log(data))
-
-/* getAllAuthors()
-.then(data=>console.log(data)) */
+//createNewCard('swsh6-45', 'Ice Rider Calyrex V', '45', 'Chilling Reign', 'https://images.pokemontcg.io/swsh6/45.png').then(data=>console.log(data))
