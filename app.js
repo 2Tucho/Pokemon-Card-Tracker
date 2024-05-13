@@ -7,16 +7,15 @@ const morgan = require("./middlewares/morgan");
 require("dotenv").config();
 
 
-// Rutas
+// Conexión con las rutas
 const collectionRoutes = require("./routes/collection.routes")
 
-//Middlewares
+// Middlewares
 app.use(express.json()); // Para parsear el body de las peticiones
 app.use(cors());
 app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 
-/******RUTAS ******/
-
+// HOME
 // http://localhost:3000/
 app.get("/", (req, res) => {
   res.status(200).send("Home. Search your card!");
@@ -26,7 +25,7 @@ app.get("/", (req, res) => {
 //http://localhost:3000/api/collection
 app.use("/api/collection", collectionRoutes);
 
-//Si se va a cualquier otra p'agina que de el error
+//Si se va a cualquier otra página que dé el error
 app.use("*", error404);
 
 // http://localhost:3000

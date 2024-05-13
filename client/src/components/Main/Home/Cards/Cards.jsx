@@ -4,7 +4,6 @@ import { SearchDataContext } from "../../../../context/SearchDataContext";
 
 const Cards = () => {
   const searchedData = useContext(SearchDataContext);
-  //console.log(searchedData.searchedData)
 
   return <div className="cards">
     { searchedData.searchedData? searchedData.searchedData.map((res, i) => {
@@ -12,6 +11,7 @@ const Cards = () => {
       <Link to={`/detailview/${res.id}`}>
         <img src={res.images.small} alt={res.name+`[${res.set.ptcgoCode}-${res.number}]`}/>
       </Link>
+      
       <p>{res.name}</p>
       { res.set.ptcgoCode ? <p>{`[${res.set.ptcgoCode}-${res.number}]`}</p> :
         res.set.name == "Scarlet & Violet" ? <p>{`[SVI-${res.number}]`}</p> :

@@ -1,12 +1,8 @@
 const collection = require('../models/collection.model');
 
-//Poner un try y un catch en todos los métodos de controladores
-
 // GET http://localhost:3000/api/collection?user_id=1   --> ALL
-
 const getAllCards = async (req, res) => {
     const user_id = req.query.user_id; // {user_id}
-    //console.log("Esto es el user_id de controllers: "+user_id)
     let cards = await collection.getAllCards(user_id);
     res.status(200).json(cards); // [] con las cartas encontradas
 };
@@ -14,7 +10,6 @@ const getAllCards = async (req, res) => {
 // POST http://localhost:3000/api/collection
 const createNewCard = async (req, res) => {
     const newCard = req.body; // {id, name, number, set, img_url, user_id}
-    console.log(newCard)
     const response = await collection.createNewCard(newCard);
     res.status(201).json({
         "card_added": response,
@@ -35,7 +30,6 @@ const updateCard = async (req, res) => {
 // DELETE http://localhost:3000/authors
 const deleteCard = async (req, res) => {
     const deletedCard = req.query.card_id; // {card_id} //req.body pilla lo del cuerpo de la petición y req.query lo que haya en la url
-    console.log(deleteCard)
     const response = await collection.deleteCard(deletedCard);
     res.status(200).json({
         "card_deleted": response,
@@ -49,5 +43,3 @@ module.exports = {
     updateCard,
     deleteCard 
 };
-
-/* getAuthors() */

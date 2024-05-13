@@ -2,12 +2,11 @@ const queries = require("../queries/collection.queries"); // Queries SQL
 const pool = require("../config/db_pgsql");
 
 
-// GET all
+// GET all cards
 const getAllCards = async (id) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        //console.log("Esto es el id de models: "+id)
         const data = await client.query(queries.getAllCards, [id]);
         result = data.rows;
     } catch (err) {
@@ -34,9 +33,9 @@ const createNewCard = async (card) => {
         ]);
         result = data.rowCount;
         if (result) {
-            const updateUsersCollection = await client.query(queries.createNewUserCollection, [user_id, id]) // Da igual como se llamen, solo sabe que lo que le de en la posición 1 del array [user_id, id] va a ser el el valor de user_id en la query y que el segundo va a ser el de poke_id
+            const updateUsersCollection = await client.query(queries.createNewUserCollection, [user_id, id]); // Da igual como se llamen, solo sabe que lo que le de en la posición 1 del array [user_id, id] va a ser el el valor de user_id en la query y que el segundo va a ser el de poke_id
             result += updateUsersCollection.rowCount;
-        }
+        };
     } catch (err) {
         console.log(err);
         throw err;
@@ -95,7 +94,3 @@ const pct = {
 };
 
 module.exports = pct;
-
-//PRUEBAS
-
-//createNewCard('swsh6-45', 'Ice Rider Calyrex V', '45', 'Chilling Reign', 'https://images.pokemontcg.io/swsh6/45.png').then(data=>console.log(data))

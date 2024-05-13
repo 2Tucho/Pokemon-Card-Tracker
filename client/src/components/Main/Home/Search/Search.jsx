@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { debounce } from "lodash";
-import axios from 'axios';
 import { SearchDataContext } from "../../../../context/SearchDataContext";
+import axios from "axios";
 
 const Search = () => {
   const [inputCard, setInputCard] = useState("");
@@ -9,7 +9,7 @@ const Search = () => {
   const formatRef = useRef();
   const supertypeRef = useRef();
   const orderRef = useRef();
-  const {searchedData, setSearchedData} = useContext(SearchDataContext);
+  const { setSearchedData } = useContext(SearchDataContext);
 
   useEffect(() => {
     let filterSupertypes = "";
@@ -60,7 +60,7 @@ const Search = () => {
       orderBy = "orderBy=-types"
     } else if (orderRef.current.value == "Type ↑") {
       orderBy = "orderBy=types"
-    } else orderBy = "orderBy=-set.releaseDate"
+    } else orderBy = "orderBy=-set.releaseDate";
 
     if(inputCard) {
       function fetchData() {
@@ -72,28 +72,21 @@ const Search = () => {
           axios.get(url, { headers })
             .then(response => setSearchedData(response.data.data))
             .catch(error => {
-              console.error('There was an error!', error);
+              console.error("There was an error!", error);
             });
-          /* console.log(url);
-          console.log(inputRef.current.value)
-          console.log(orderRef.current.value)
-          console.log(formatRef.current.value)
-          console.log(supertypeRef.current.value)
-          console.log(searchedData) */
         } catch {
           console.log("ERROR: NOT FOUND")
         }
       };
       fetchData();
     } else null
-  }, [inputCard])
+  }, [inputCard]);
 
   function searchCard() {
     setInputCard(inputRef.current.value)
-    console.log(inputCard)
-  }
+  };
 
-  const debouncedOnChange = debounce(searchCard, 1500)
+  const debouncedOnChange = debounce(searchCard, 1500);
 
   return <div className="search">
     <div>

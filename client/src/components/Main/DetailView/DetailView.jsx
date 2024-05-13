@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { SearchDataContext } from "../../../context/SearchDataContext";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 const DetailView = () => {
   const [cardDetail, setCardDetail] = useState("");
@@ -9,13 +9,9 @@ const DetailView = () => {
   const pokeId = useParams();
 
   useEffect(() => {
-    /* console.log(pokeId.id)
-    console.log(searchedData.searchedData)
-    console.log(typeof searchedData) */
     let result = searchedData.searchedData.find(e => e.id == pokeId.id); // Busco pokeId.id porque el parámetro lo guarada en un objeto cuya propiedad es id y su valor es el número del pokémon que estoy buscando
     setCardDetail(result);
-    console.log(cardDetail)
-  }, [pokeId.id]) // Los useEffect los hace TODOS la primera vez
+  }, [pokeId.id]); // Los useEffect los hace TODOS la primera vez
 
   /* Funcion que hace el fetch a localhost3000/apicollection. Por el body le mando los parametros a guardar. Con axios es mas facil porque pones la ruta en el primer parametro y en el segundo un objeto que tiene dentro los parametros que le paso por body */
   async function addCard() {
@@ -27,11 +23,11 @@ const DetailView = () => {
         "set": cardDetail.set.name, 
         "img_url": cardDetail.images.small,
         "user_id": 1
-      })
+      });
     }
     catch {
       console.log("ERROR: NOT FOUND")
-    }
+    };
   };
 
   return <>

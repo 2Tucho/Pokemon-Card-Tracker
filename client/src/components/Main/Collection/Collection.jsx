@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const Collection = () => {
   const [collectionCards, setCollectionCards] = useState([]);
@@ -7,26 +7,26 @@ const Collection = () => {
   useEffect(() => {
     async function getCollection() {
       try {
-        const userId = 1
-        const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`)
-        setCollectionCards(cards.data)
+        const userId = 1;
+        const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`);
+        setCollectionCards(cards.data);
       }
       catch (error) {
-        console.log(`ERROR: ${error}`)
-      }
-    }
+        console.log(`ERROR: ${error}`);
+      };
+    };
     getCollection();
   }, []);
 
   const showCollection = async () => {
     try {
-      const userId = 1
-      const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`)
-      setCollectionCards(cards.data)
+      const userId = 1;
+      const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`);
+      setCollectionCards(cards.data);
     }
     catch (error) {
-      console.log(`ERROR: ${error}`)
-    }
+      console.log(`ERROR: ${error}`);
+    };
   };
 
   async function updateCollection(id) {
@@ -38,11 +38,11 @@ const Collection = () => {
         "play_pokemon": playRef.current.value,
         "play_pokemon_foil": playFoilRef.current.value,
         "id": id
-      })
+      });
     }
     catch {
       console.log("ERROR: NOT FOUND")
-    }
+    };
   };
 
   function handleClick(id) {
@@ -52,12 +52,11 @@ const Collection = () => {
 
   async function deleteCard(id) {
     try {
-      console.log(id)
-      await axios.delete(`http://localhost:3000/api/collection?card_id=${id}`)
+      await axios.delete(`http://localhost:3000/api/collection?card_id=${id}`);
     }
     catch {
-      console.log("ERROR: NOT FOUND")
-    }
+      console.log("ERROR: NOT FOUND");
+    };
   };
 
   return (<section className="collection">
@@ -97,7 +96,7 @@ const Collection = () => {
       </article>
       )
     })}
-  </section>)
+  </section>);
 };
 
 export default Collection;
