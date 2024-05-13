@@ -15,4 +15,48 @@
             width: 300px;
         }
     }
+
+    .card-basic-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        &>article {
+            &>h2 {
+                font-size: 36px;
+            }
+
+            &>h3 {
+                font-size: 24px;
+            }
+        }
+
+        &>p {
+            font-size: 20px;
+        }
+    }
+
+    .card-attacks-info {
+        margin-left: 20px;
+        margin-right: 20px;
+
+        &>h6 {
+            font-size: 16px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ability{
+            &>div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &>img {
+                    width: 80px;
+                }
+            }
+        }
+    }
 }
