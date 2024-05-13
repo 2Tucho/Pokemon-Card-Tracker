@@ -36,7 +36,8 @@ const DetailView = () => {
 
   return <>
     <button onClick={addCard}>Like</button>
-    {cardDetail ? <section className="detail-view">
+    {cardDetail ? 
+    <section className="detail-view">
       <article className="card-img">
         <img src={cardDetail.images.large} alt={cardDetail.name} />
       </article>
@@ -127,7 +128,8 @@ const DetailView = () => {
           <p>{cardDetail.regulationMark}</p>
         </section> : null}
       </article>
-    </section> : null}
+    </section> 
+    : null}
   </>
 };
 

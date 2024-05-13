@@ -4,11 +4,11 @@ import { SearchDataContext } from "../../../../context/SearchDataContext";
 
 const Cards = () => {
   const searchedData = useContext(SearchDataContext);
-  console.log(searchedData.searchedData)
+  //console.log(searchedData.searchedData)
 
   return <div className="cards">
-    { searchedData.searchedData? searchedData.searchedData.map(res => 
-    <article>
+    { searchedData.searchedData? searchedData.searchedData.map((res, i) => {
+    return <article key={i}>
       <Link to={`/detailview/${res.id}`}>
         <img src={res.images.small} alt={res.name+`[${res.set.ptcgoCode}-${res.number}]`}/>
       </Link>
@@ -23,7 +23,7 @@ const Cards = () => {
         res.set.name == "Temporal Forces" ? <p>{`[TEF-${res.number}]`}</p> : 
         res.set.name == "Scarlet & Violet Black Star Promos" ? <p>{`[TEF-${res.number}]`}</p> : 
         <p>{`[${res.set.id}-${res.number}]`}</p>}
-    </article>) : null }
+    </article>}) : null }
   </div>;
 };
 

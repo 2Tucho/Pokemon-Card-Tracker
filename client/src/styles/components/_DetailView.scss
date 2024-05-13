@@ -1,10 +1,11 @@
+button {
+    width: 20%;
+    
+}
+
 .detail-view {
     display: flex;
     flex-direction: column;
-
-    &>button {
-        width: 30%;
-    }
 
     .card-img {
         display: flex;
