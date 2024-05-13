@@ -48,14 +48,19 @@ VALUES (01, 'user1', 'temp123', true);
 /* Agregar una carta a favoritos */
 INSERT INTO collection (id, name, number, set, img_url, normal_foil, holo_foil, reverse_foil, play_pokemon, play_pokemon_foil)
 VALUES ('sv4pt5-232', 'Mew ex', 232, 'Paldean Fates','https://images.pokemontcg.io/sv4pt5/232.png', 1, 0, 0, 0, 0),
-('sv5-115', 'Metagross', 115, 'Temporal Forces', 'https://images.pokemontcg.io/sv5/115.png', 1, 0, 0, 0, 0),
-('swsh10-40', 'Origin Forme Palkia VSTAR', 40, 'Astral Radiance','https://images.pokemontcg.io/swsh10/40.png', 1, 0, 0, 0, 0);
+('swsh10-40', 'Origin Forme Palkia VSTAR', 40, 'Astral Radiance','https://images.pokemontcg.io/swsh10/40.png', 1, 0, 0, 0, 0),
+('xy7-84',	'Sceptile-EX', '84',	'Ancient Origins', 'https://images.pokemontcg.io/xy7/84.png', 1, 0, 0, 0, 0),
+('sv4-193',	'Plusle',	'193', 'Paradox Rift', 'https://images.pokemontcg.io/sv4/193.png', 1, 0, 0, 0, 0),
+('swsh6-181',	'Metagross V', '181', 'Chilling Reign', 'https://images.pokemontcg.io/swsh6/181.png', 1, 0, 0, 0, 0);
+
 
 /* Tabla relacional */
 INSERT INTO users_collection (user_id, poke_id)
-VALUES (01, 'sv4pt5-232'),
-(02, 'sv5-115'),
-(01, 'swsh10-40');
+VALUES (1, 'sv4pt5-232'),
+(1, 'swsh10-40'),
+(1, 'xy7-84'),
+(1, 'sv4-193'),
+(1, 'swsh6-181');
 
 
 

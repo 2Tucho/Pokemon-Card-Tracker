@@ -18,9 +18,9 @@ const DetailView = () => {
   }, [pokeId.id]) // Los useEffect los hace TODOS la primera vez
 
   /* Funcion que hace el fetch a localhost3000/apicollection. Por el body le mando los parametros a guardar. Con axios es mas facil porque pones la ruta en el primer parametro y en el segundo un objeto que tiene dentro los parametros que le paso por body */
-  function addCard() {
+  async function addCard() {
     try {
-      axios.post("http://localhost:3000/api/collection", {
+      await axios.post("http://localhost:3000/api/collection", {
         "id": cardDetail.id, 
         "name": cardDetail.name, 
         "number": cardDetail.number, 
@@ -35,8 +35,10 @@ const DetailView = () => {
   };
 
   return <>
-    <button onClick={addCard}>Like</button>
-    {cardDetail ? <section className="detail-view">
+    {cardDetail ? 
+    <section className="detail-view">
+      <button onClick={addCard}>Like</button>
+
       <article className="card-img">
         <img src={cardDetail.images.large} alt={cardDetail.name} />
       </article>
@@ -44,15 +46,18 @@ const DetailView = () => {
       <article className="card-basic-info">
         <article>
           <h2>{cardDetail.name}</h2>
-          <h3>{cardDetail.supertype}{cardDetail.subtypes ? `- ${cardDetail.subtypes}` : null}</h3>
+          <h3>{cardDetail.supertype}{cardDetail.subtypes ? `- ${cardDetail.subtypes.toString().replaceAll(",", ", ")}` : null}</h3>
         </article>
         {cardDetail.hp ? <p className="hp-type-row">HP {cardDetail.hp} {cardDetail.types}</p> : null}
       </article>
 
-      {cardDetail.attacks ? <article id="card-attacks-info">
+      {cardDetail.attacks ? <article className="card-attacks-info">
         {cardDetail.abilities ? <h6>ABILITY</h6> : null}
-        {cardDetail.abilities ? <section>
-          <p>{cardDetail.abilities[0].name}</p>
+        {cardDetail.abilities ? <section className="ability">
+          <div>
+            <img src="../../../../public/ability.png" alt="" />
+            <p>{cardDetail.abilities[0].name}</p>
+          </div>
           <p>{cardDetail.abilities[0].text}</p>
         </section> : null}
 
@@ -99,7 +104,7 @@ const DetailView = () => {
         </section> : null}
       </article>
 
-      <article id="card-variety-info-1">
+      <article className="card-variety-info-1">
         {cardDetail.artist ? <section class="card-bottom-info">
           <h6>ARTIST</h6>
           <p>{cardDetail.artist}</p>
@@ -114,7 +119,7 @@ const DetailView = () => {
         </section>
       </article>
 
-      <article id="card-variety-info-2">
+      <article className="card-variety-info-2">
         <section class="card-bottom-info">
           <h6>NUMBER</h6>
           <p>{cardDetail.number} / {cardDetail.set.printedTotal}</p>
@@ -124,7 +129,8 @@ const DetailView = () => {
           <p>{cardDetail.regulationMark}</p>
         </section> : null}
       </article>
-    </section> : null}
+    </section> 
+    : null}
   </>
 };
 

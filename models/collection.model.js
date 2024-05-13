@@ -3,11 +3,11 @@ const pool = require("../config/db_pgsql");
 
 
 // GET all
-const getAllCards = async (user_id) => {
-    const { id } = user_id;
+const getAllCards = async (id) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
+        //console.log("Esto es el id de models: "+id)
         const data = await client.query(queries.getAllCards, [id]);
         result = data.rows;
     } catch (err) {
@@ -71,8 +71,7 @@ const updateCard = async (author) => {
 };
 
 // DELETE
-const deleteCard = async (card) => {
-    const { id } = card;
+const deleteCard = async (id) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
