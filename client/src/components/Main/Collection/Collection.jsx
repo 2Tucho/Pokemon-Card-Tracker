@@ -1,15 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 const Collection = () => {
   const [collectionCards, setCollectionCards] = useState([]);
-  const normalRef = useRef();
-  const holoRef = useRef();
-  const reverseRef = useRef();
-  const playRef = useRef();
-  const playFoilRef = useRef();
 
-  useEffect(() => {
+  /* useEffect(() => {
     async function getCollection() {
       try {
         const userId = 1
@@ -24,9 +19,37 @@ const Collection = () => {
     }
 
     getCollection()
-  }, [])
+  }, []) */
 
-  /* async function updateCollection(id) {
+  useEffect(() => {
+    async function getCollection() {
+      try {
+        const userId = 1
+        const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`)
+        setCollectionCards(cards.data)
+      }
+      catch (error) {
+        console.log("ERROR: NOT FOUND")
+        //console.log(error.message)
+      }
+    }
+    getCollection();
+  }, []);
+
+  const showCollection = async () => {
+    try {
+      const userId = 1
+      const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`)
+      setCollectionCards(cards.data)
+    }
+    catch (error) {
+      console.log("ERROR: NOT FOUND")
+      //console.log(error.message)
+    }
+  }
+  
+
+  async function updateCollection(id) {
     try {
       await axios.put("http://localhost:3000/api/collection", {
         "normal_foil": normalRef.current.value,
@@ -40,7 +63,12 @@ const Collection = () => {
     catch {
       console.log("ERROR: NOT FOUND")
     }
-  }; */
+  };
+
+  function handleClick (id) {
+    deleteCard(id);
+    showCollection();
+  }
 
   async function deleteCard(id) {
     try {
@@ -56,17 +84,17 @@ const Collection = () => {
     <h1>Collection</h1>
     {collectionCards.map((data, i) => {
       return <article key={i}>
-        <button onClick={() => deleteCard(data.id)}>Delete</button>
+        <button onClick={() => handleClick(data.id)}>Delete</button>
         <img src={data.img_url} alt={data.name} />
         <p>{data.name}</p>
         <p>{data.number}</p>
         <p>{data.set}</p>
         <div>
-          <input type="number" ref={normalRef} defaultValue={data.normal_foil}></input>
-          <input type="number" ref={holoRef} defaultValue={data.holo_foil}></input>
-          <input type="number" ref={reverseRef} defaultValue={data.reverse_foil}></input>
-          <input type="number" ref={playRef} defaultValue={data.play_pokemon}></input>
-          <input type="number" ref={playFoilRef} defaultValue={data.play_pokemon_foil}></input>
+          <input type="number" defaultValue={data.normal_foil}></input>
+          <input type="number" defaultValue={data.holo_foil}></input>
+          <input type="number" defaultValue={data.reverse_foil}></input>
+          <input type="number" defaultValue={data.play_pokemon}></input>
+          <input type="number" defaultValue={data.play_pokemon_foil}></input>
         </div>
         <button onClick={() => updateCollection(data.id)}>Apply changes</button>
       </article>

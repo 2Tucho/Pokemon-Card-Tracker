@@ -35,9 +35,10 @@ const DetailView = () => {
   };
 
   return <>
-    <button onClick={addCard}>Like</button>
     {cardDetail ? 
     <section className="detail-view">
+      <button onClick={addCard}>Like</button>
+
       <article className="card-img">
         <img src={cardDetail.images.large} alt={cardDetail.name} />
       </article>
@@ -103,7 +104,7 @@ const DetailView = () => {
         </section> : null}
       </article>
 
-      <article id="card-variety-info-1">
+      <article className="card-variety-info-1">
         {cardDetail.artist ? <section class="card-bottom-info">
           <h6>ARTIST</h6>
           <p>{cardDetail.artist}</p>
@@ -118,7 +119,7 @@ const DetailView = () => {
         </section>
       </article>
 
-      <article id="card-variety-info-2">
+      <article className="card-variety-info-2">
         <section class="card-bottom-info">
           <h6>NUMBER</h6>
           <p>{cardDetail.number} / {cardDetail.set.printedTotal}</p>
