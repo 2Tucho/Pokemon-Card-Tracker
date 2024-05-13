@@ -4,23 +4,6 @@ import axios from 'axios';
 const Collection = () => {
   const [collectionCards, setCollectionCards] = useState([]);
 
-  /* useEffect(() => {
-    async function getCollection() {
-      try {
-        const userId = 1
-        const cards = await axios.get(`http://localhost:3000/api/collection?user_id=${userId}`)
-        console.log(cards.data)
-        setCollectionCards(cards.data)
-      }
-      catch (error) {
-        console.log("ERROR: NOT FOUND")
-        //console.log(error.message)
-      }
-    }
-
-    getCollection()
-  }, []) */
-
   useEffect(() => {
     async function getCollection() {
       try {
@@ -29,8 +12,7 @@ const Collection = () => {
         setCollectionCards(cards.data)
       }
       catch (error) {
-        console.log("ERROR: NOT FOUND")
-        //console.log(error.message)
+        console.log(`ERROR: ${error}`)
       }
     }
     getCollection();
@@ -43,11 +25,9 @@ const Collection = () => {
       setCollectionCards(cards.data)
     }
     catch (error) {
-      console.log("ERROR: NOT FOUND")
-      //console.log(error.message)
+      console.log(`ERROR: ${error}`)
     }
-  }
-  
+  };
 
   async function updateCollection(id) {
     try {
@@ -65,10 +45,10 @@ const Collection = () => {
     }
   };
 
-  function handleClick (id) {
+  function handleClick(id) {
     deleteCard(id);
     showCollection();
-  }
+  };
 
   async function deleteCard(id) {
     try {
@@ -83,21 +63,39 @@ const Collection = () => {
   return (<section className="collection">
     <h1>Collection</h1>
     {collectionCards.map((data, i) => {
-      return <article key={i}>
-        <button onClick={() => handleClick(data.id)}>Delete</button>
+      return (<article key={i} className="collection-card">
         <img src={data.img_url} alt={data.name} />
-        <p>{data.name}</p>
-        <p>{data.number}</p>
-        <p>{data.set}</p>
         <div>
-          <input type="number" defaultValue={data.normal_foil}></input>
-          <input type="number" defaultValue={data.holo_foil}></input>
-          <input type="number" defaultValue={data.reverse_foil}></input>
-          <input type="number" defaultValue={data.play_pokemon}></input>
-          <input type="number" defaultValue={data.play_pokemon_foil}></input>
+          <button onClick={() => handleClick(data.id)} className="delete-button">Delete</button>
+          <p>{data.name}</p>
+          <p>{data.number}</p>
+          <p>{data.set}</p>
+          <div>
+            <div>
+              <label htmlFor="">Normal holo</label>
+              <input type="number" defaultValue={data.normal_foil}></input>
+            </div>
+            <div>
+              <label htmlFor="">Holo Foil</label>
+              <input type="number" defaultValue={data.holo_foil}></input>
+            </div>
+            <div>
+              <label htmlFor="">Reverse Foil</label>
+              <input type="number" defaultValue={data.reverse_foil}></input>
+            </div>
+            <div>
+              <label htmlFor="">Play! Pokémon Stamp</label>
+              <input type="number" defaultValue={data.play_pokemon}></input>
+            </div>
+            <div>
+              <label htmlFor="">Play! Pokémon Stamp Foil</label>
+              <input type="number" defaultValue={data.play_pokemon_foil}></input>
+            </div>
+          </div>
+          <button onClick={() => updateCollection(data.id)} className="aply-changes">Apply changes</button>
         </div>
-        <button onClick={() => updateCollection(data.id)}>Apply changes</button>
       </article>
+      )
     })}
   </section>)
 };

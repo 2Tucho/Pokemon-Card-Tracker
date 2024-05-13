@@ -1,0 +1,43 @@
+.collection {
+    margin: 10px;
+
+    .collection-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: red;
+        margin: 10px;
+
+        &>img {
+            width: 180px;
+            margin: 10px;
+        }
+
+        &>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+
+            .delete-button {
+
+            }
+
+            &>div {
+                &>div {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    &>input {
+                        width: 16px;
+                    }
+                }
+
+                .aply-changes {
+
+                }
+            }
+        }
+    }
+}
