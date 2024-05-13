@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { SearchDataContext } from "../../../context/SearchDataContext";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 const DetailView = () => {
   const [cardDetail, setCardDetail] = useState("");
@@ -14,10 +15,27 @@ const DetailView = () => {
     let result = searchedData.searchedData.find(e => e.id == pokeId.id); // Busco pokeId.id porque el parámetro lo guarada en un objeto cuya propiedad es id y su valor es el número del pokémon que estoy buscando
     setCardDetail(result);
     console.log(cardDetail)
-
   }, [pokeId.id]) // Los useEffect los hace TODOS la primera vez
 
+  /* Funcion que hace el fetch a localhost3000/apicollection. Por el body le mando los parametros a guardar. Con axios es mas facil porque pones la ruta en el primer parametro y en el segundo un objeto que tiene dentro los parametros que le paso por body */
+  function addCard() {
+    try {
+      axios.post("http://localhost:3000/api/collection", {
+        "id": cardDetail.id, 
+        "name": cardDetail.name, 
+        "number": cardDetail.number, 
+        "set": cardDetail.set.name, 
+        "img_url": cardDetail.images.small,
+        "user_id": 1
+      })
+    }
+    catch {
+      console.log("ERROR: NOT FOUND")
+    }
+  };
+
   return <>
+    <button onClick={addCard}>Like</button>
     {cardDetail ? <section className="detail-view">
       <article className="card-img">
         <img src={cardDetail.images.large} alt={cardDetail.name} />
@@ -26,12 +44,12 @@ const DetailView = () => {
       <article className="card-basic-info">
         <article>
           <h2>{cardDetail.name}</h2>
-          <h3>{cardDetail.supertype}{cardDetail.subtypes? `- ${cardDetail.subtypes}` : null}</h3>
+          <h3>{cardDetail.supertype}{cardDetail.subtypes ? `- ${cardDetail.subtypes}` : null}</h3>
         </article>
-        {cardDetail.hp? <p className="hp-type-row">HP {cardDetail.hp} {cardDetail.types}</p> : null}
+        {cardDetail.hp ? <p className="hp-type-row">HP {cardDetail.hp} {cardDetail.types}</p> : null}
       </article>
 
-      {cardDetail.attacks? <article id="card-attacks-info">
+      {cardDetail.attacks ? <article id="card-attacks-info">
         {cardDetail.abilities ? <h6>ABILITY</h6> : null}
         {cardDetail.abilities ? <section>
           <p>{cardDetail.abilities[0].name}</p>
@@ -82,7 +100,7 @@ const DetailView = () => {
       </article>
 
       <article id="card-variety-info-1">
-        {cardDetail.artist? <section class="card-bottom-info">
+        {cardDetail.artist ? <section class="card-bottom-info">
           <h6>ARTIST</h6>
           <p>{cardDetail.artist}</p>
         </section> : null}
