@@ -1,6 +1,29 @@
 # Pokemon-Card-Tracker
 Pokemon TCG search and collection app
 
+TECNOLOGÍAS APLICADAS
+ - HTML5
+ - JAVASCRIPT
+ - SASS
+ - DOCKER
+ - PG4ADMIN
+ - POSTMAN
+ - TRELLO
+ - GITHUB
+ - EXCALIDRAW
+
+
+COSAS PENDIENTES
+
+ - Que funcione el PUT. No he podido pillar los valores de los input para editar la cantidad de cartas en la colección
+ - Que cuando se borre una carta de la colección se actualice la página al momento
+ - Preparar el navegador para la vista de los usuarios que no están logeados
+ - Impedir que se pueda dar a favoritos más de una vez y de error la consola
+ - Hacer los media queries para adaptar la web a las pantallas de tableta y pc
+
+FASE 2
+ - Hacer un buscador dentro de la colección
+
 
 RUTAS API
 
