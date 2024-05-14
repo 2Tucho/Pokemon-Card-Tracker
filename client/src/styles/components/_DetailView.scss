@@ -2,19 +2,34 @@
     display: flex;
     flex-direction: column;
 
-    button {
-        width: 20%;
-        
-    }
-
     .card-img {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 24px;
 
         &>img {
             width: 300px;
         }
+    }
+
+    .addCard-div {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        width: 95%;
+        margin-top: 24px;
+
+        .addCard-button {
+            width: 12%;
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .addCard-button:active {
+            background-color: red;
+        }
+
     }
 
     .card-basic-info {
@@ -26,6 +41,9 @@
         &>article {
             &>h2 {
                 font-size: 36px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: 0;
             }
 
             &>h3 {
@@ -33,8 +51,20 @@
             }
         }
 
-        &>p {
-            font-size: 20px;
+        &>div {
+            display: flex;
+            margin-bottom: 12px;
+
+            &>p {
+                font-size: 24px;
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-right: 8px;
+            }
+
+            &>img {
+                width: 30px;
+            }
         }
     }
 
@@ -48,7 +78,7 @@
             margin-bottom: 10px;
         }
 
-        .ability{
+        .ability {
             &>div {
                 display: flex;
                 flex-direction: row;
@@ -57,6 +87,185 @@
                 &>img {
                     width: 80px;
                 }
+
+                &>p {
+                    font-size: 22px;
+                    margin-left: 10px;
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                }
+            }
+
+            .ability-text {
+                margin-top: 0;
+                margin-bottom: 32px;
+                text-align: justify;
+            }
+        }
+
+        &>section {
+            .attack-info {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 10px;
+
+                &>div {
+                    display: flex;
+                    margin-bottom: 8px;
+
+                    &>img {
+                        width: 28px;
+                    }
+
+                    &>p {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        margin-left: 6px;
+                        padding-top: 2px;
+                        font-size: 20px;
+                    }
+                }
+
+                &>p {
+                    margin-top: 0px;
+                    margin-bottom: 8px;
+                    font-size: 20px;
+                }
+            }
+
+            .attack-text {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .card-rules-info {
+        padding-left: 12px;
+        padding-right: 12px;
+        text-align: justify;
+    }
+
+    .weak-res-reat-raw {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+        .card-weak-info {
+            text-align: center;
+            width: 60px;
+            margin-right: 30px;
+
+            &>h6 {
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                font-size: 10px;
+            }
+
+            &>div {
+                display: flex;
+                justify-content: center;
+
+                &>img {
+                    width: 20px;
+                }
+
+                &>p {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .card-resis-info {
+            text-align: center;
+            width: 72px;
+            margin-right: 30px;
+
+            &>h6 {
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                font-size: 10px;
+            }
+
+            &>div {
+                display: flex;
+                justify-content: center;
+
+                &>img {
+                    width: 20px;
+                }
+
+                &>p {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    font-size: 18px;
+                }
+            }
+
+
+        }
+
+        .card-rc-info {
+            text-align: center;
+            width: 82px;
+
+            &>h6 {
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                font-size: 10px;
+            }
+
+            &>img {
+                width: 20px;
+            }
+        }
+    }
+
+    .card-variety-info-1 {
+        display: flex;
+        justify-content: center;
+
+        .card-bottom-info {
+            text-align: center;
+            width: 82px;
+
+            &>h6 {
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 2px;
+                font-size: 10px;
+            }
+
+            &>p {
+                margin-top: 2px;
+            }
+        }
+    }
+
+    .card-variety-info-2 {
+        display: flex;
+        justify-content: center;
+
+        .card-bottom-info {
+            text-align: center;
+            width: 82px;
+
+            &>h6 {
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 2px;
+                font-size: 10px;
+            }
+
+            &>p {
+                margin-top: 2px;
             }
         }
     }
