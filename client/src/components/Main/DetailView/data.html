@@ -1,0 +1,94 @@
+<section id="modal-inner-image">
+    <img src="${data[0].images.large}" alt="${data[0].name}">
+</section id="modal-inner-data">
+<article id="card-basic-info">
+    <article>
+        <h2>${data[0].name}</h2>
+        <h3>${data[0].supertype} - ${data[0].subtypes}</h3>
+    </article>
+    <p id="hp-type-row">HP ${data[0].hp} ${changeTypes(data[0].types)}</p>
+</article>
+<article id="card-attacks-info">
+    <h6 id="abilities-title">${hasAbilityType(data[0].abilities)}</h6>
+    <section>
+        <p>${hasAbilityName(data[0].abilities)}</p>
+        <p>${hasAbilityText(data[0].abilities)}</p>
+    </section>
+    <h6>ATTACKS</h6>
+    <section>
+        <div class="attack-cost-name-damage">
+            <p>${attacksCost(0)} ${attackName(0)}</p>
+            <p>${attackDamage(0)}</p>
+        </div>
+        <p rules-attack-text>${attackText(0)}</p>
+    </section>
+    <section>
+        <div class="attack-cost-name-damage">
+            <p>${attacksCost(1)} ${attackName(1)}</p>
+            <p>${attackDamage(1)}</p>
+        </div>
+        <p rules-attack-text>${attackText(1)}</p>
+    </section>
+    <section>
+        <div class="attack-cost-name-damage">
+            <p>${attacksCost(2)} ${attackName(2)}</p>
+            <p>${attackDamage(2)}</p>
+        </div>
+        <p rules-attack-text>${attackText(2)}</p>
+    </section>
+</article>
+<article id="card-rules-info">
+    <p class="rules-text">${rules(data[0].rules)}</p>
+</article>
+<article id="weak-res-reat-raw">
+    <section class="card-bottom-info">
+        <h6>WEAKNESS</h6>
+        <p>${weaknessType(data[0].weaknesses)} ${weaknessValue(data[0].weaknesses)}</p>
+    </section>
+    <section class="card-bottom-info">
+        <h6>RESISTANCES</h6>
+        <p>${resistanceType(data[0].resistances)} ${resistanceValue(data[0].resistances)}</p>
+    </section>
+    <section class="card-bottom-info">
+        <h6>RETREAT COST</h6>
+        <p>${retreatCost(data[0].retreatCost)}</p>
+    </section>
+</article>
+<article id="card-variety-info-1">
+    <section class="card-bottom-info">
+        <h6>ARTIST</h6>
+        <p>${data[0].artist}</p>
+    </section>
+    <section class="card-bottom-info">
+        <h6>RARITY</h6>
+        <p>${data[0].rarity}</p>
+    </section>
+    <section class="card-bottom-info">
+        <h6>SET</h6>
+        <p>${data[0].set.name}</p>
+    </section>
+</article>
+<article id="card-variety-info-2">
+    <section class="card-bottom-info">
+        <h6>NUMBER</h6>
+        <p>${data[0].number} / ${data[0].set.printedTotal}</p>
+    </section>
+    <section class="card-bottom-info">
+        ${regMark(data[0].regulationMark)}
+    </section>
+</article>
+<article id="card-regulations-info">
+    <section id="card-regulations-standard">
+        <p class="regulation-button">Standard</p>
+        <p class="legalities-button">${data[0].legalities.standard}</p>
+    </section>
+    <section id="card-regulations-expanded">
+        <p class="regulation-button">Expanded</p>
+        <p class="legalities-button">${data[0].legalities.expanded}</p>
+    </section>
+    <section id="card-regulations-unlimited">
+        <p class="regulation-button">Unlimited</p>
+        <p class="legalities-button">${data[0].legalities.unlimited}</p>
+    </section>
+</article>
+</section>

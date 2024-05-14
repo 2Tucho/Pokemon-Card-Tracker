@@ -1,0 +1,53 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+
+    &>div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 30px;
+        width: 90%;
+
+        &>p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        &>select {
+            font-size: 10px;
+            margin-bottom: 2px;
+            height: 24px;
+        }
+
+        .order-by {
+            width: 90px;
+            margin-right: 24px;
+        }
+
+        .filter-by-supertype {
+            width: 88px;
+        }
+
+        .filter-by-format {
+            width: 80px;
+        }
+    }
+
+    &>form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &>input {
+            height: 30px;
+            padding-left: 5px;
+            padding-top: 2px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+    }
+}
