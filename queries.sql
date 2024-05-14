@@ -1,3 +1,4 @@
+/* Para crear las tablas */
 CREATE TABLE users
   (
   id bigint NOT NULL,
@@ -52,7 +53,6 @@ VALUES ('sv4pt5-232', 'Mew ex', 232, 'Paldean Fates','https://images.pokemontcg.
 ('xy7-84',	'Sceptile-EX', '84',	'Ancient Origins', 'https://images.pokemontcg.io/xy7/84.png', 1, 0, 0, 0, 0),
 ('sv4-193',	'Plusle',	'193', 'Paradox Rift', 'https://images.pokemontcg.io/sv4/193.png', 1, 0, 0, 0, 0),
 ('swsh6-181',	'Metagross V', '181', 'Chilling Reign', 'https://images.pokemontcg.io/swsh6/181.png', 1, 0, 0, 0, 0);
-
 
 /* Tabla relacional */
 INSERT INTO users_collection (user_id, poke_id)
