@@ -60,15 +60,18 @@ const Collection = () => {
   };
 
   return (<section className="collection">
-    <h1>Collection</h1>
+    <div className="collection-h1">
+      <h1>Collection</h1>
+    </div>
     {collectionCards.map((data, i) => {
       return (<article key={i} className="collection-card">
         <img src={data.img_url} alt={data.name} />
         <div>
-          <button onClick={() => handleClick(data.id)} className="delete-button">Delete</button>
-          <p>{data.name}</p>
-          <p>{data.number}</p>
-          <p>{data.set}</p>
+          <p className="collection-name"><strong>{data.name}</strong></p>
+          <div className="number-set-collection">
+            <p>#{data.number}</p>
+            <p>{data.set}</p>
+          </div>
           <div>
             <div>
               <label htmlFor="">Normal holo</label>
@@ -91,7 +94,10 @@ const Collection = () => {
               <input type="number" defaultValue={data.play_pokemon_foil}></input>
             </div>
           </div>
-          <button onClick={() => updateCollection(data.id)} className="aply-changes">Apply changes</button>
+          <div className="button-div">
+            <button onClick={() => updateCollection(data.id)} className="aply-changes">Apply changes</button>
+            <button onClick={() => handleClick(data.id)} className="delete-button">Delete</button>
+          </div>
         </div>
       </article>
       )

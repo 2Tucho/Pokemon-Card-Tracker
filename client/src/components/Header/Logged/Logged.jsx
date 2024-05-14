@@ -10,7 +10,7 @@ const Logged = () => {
     </ul>
     
     <div>
-        <h1>PCT</h1>
+        <img src="../../../../public/PCT.png" alt="" />
         <p>Pokémon Card Tracker</p>
       </div>
   </nav>;
