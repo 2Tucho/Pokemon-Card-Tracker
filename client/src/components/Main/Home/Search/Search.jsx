@@ -86,7 +86,7 @@ const Search = () => {
     setInputCard(inputRef.current.value)
   };
 
-  const debouncedOnChange = debounce(searchCard, 1500);
+  const debouncedOnChange = debounce(searchCard, 1000);
 
   return <div className="search">
     <div>
